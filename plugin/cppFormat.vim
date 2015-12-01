@@ -12,7 +12,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 " automatic plugin load
-call cppformat#Enable()
+call cppFormat#Enable()
 
 " vim plugin boilerplate
 let &cpo = s:save_cpo 

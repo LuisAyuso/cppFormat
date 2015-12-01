@@ -6,10 +6,10 @@
 " }}}
 "=============================================================================
 
-if exists("g:cppformat_load")
+if exists("g:cppFormat_load")
     finish
 endif
-let g:cppformat_load = 1
+let g:cppFormat_load = 1
 
 
 " vim plugin boilerplate
@@ -19,14 +19,14 @@ set cpo&vim
 
 " SECTION: config
 "=============================================================================
-if !exists("g:cppformat_command")
-    let g:cppformat_command = "clang-format"
+if !exists("g:cppFormat_command")
+    let g:cppFormat_command = "clang-format"
 endif
 
 
 " SECTION: General functions
 "=============================================================================
-function! cppformat#version()
+function! cppFormat#version()
     return 0.1
 endfunction
 
@@ -34,11 +34,11 @@ endfunction
 
 " this function works with a file, not a vim buffer, for this reason, 
 " we sillently overwrite the file and reload the buffer
-function! cppformat#formatfile()
+function! cppFormat#formatfile()
 
 
     " format file
-    let l:res = system(g:cppformat_command . " -i " . bufname("%"))
+    let l:res = system(g:cppFormat_command . " -i " . bufname("%"))
     
     "reload externaly altered file
     edit
@@ -52,14 +52,14 @@ endfunction
 
 
 
-function! cppformat#Enable()
+function! cppFormat#Enable()
 
     echohl  "cpp format plugin"
-    augroup cppformatStart
+    augroup cppFormatStart
       autocmd!
-      autocmd  BufWritePost *.cpp call cppformat#formatfile()
-      autocmd  BufWritePost *.cxx call cppformat#formatfile()
-      autocmd  BufWritePost *.cc call cppformat#formatfile()
+      autocmd  BufWritePost *.cpp call cppFormat#formatfile()
+      autocmd  BufWritePost *.cxx call cppFormat#formatfile()
+      autocmd  BufWritePost *.cc call cppFormat#formatfile()
     augroup END
 endfunction
 
